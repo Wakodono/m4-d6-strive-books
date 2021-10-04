@@ -11,9 +11,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <WarningSign text="WARNING!!" />
+        {/* <WarningSign text="WARNING!!" />
         <MyBadge text="NEW!!" color="info" />
-        <SingleBook book={fantasyBooks[0]} />
+        <SingleBook book={fantasyBooks[0]} /> */}
         <BookList books={fantasyBooks} />
       </header>
     </div>
