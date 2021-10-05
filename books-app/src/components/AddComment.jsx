@@ -7,7 +7,18 @@ class AddComment extends Component {
         comment: {
             comment: '',
             rate: 1,
-            elementId: this.props.asin
+            elementId: null
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.asin !== this.props.asin) {
+            this.setState({
+                comment: {
+                    ...this.state.comment,
+                    elementId: this.props.asin
+                }
+            })
         }
     }
 
@@ -19,11 +30,10 @@ class AddComment extends Component {
                 body: JSON.stringify(this.state.comment),
                 headers: {
                     'Content-type': 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI3OWY5NTgxNmI1YjAwMTU5NDA3NDAiLCJpYXQiOjE2MjI2NDY2NzcsImV4cCI6MTYyMzg1NjI3N30.y-rBwB5WAQOWBvWrLlAgTQUrbGulxd2M6cWH3VLyGLw'
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFkMDkxOTJkNTI2MjAwMTViNmRjZjgiLCJpYXQiOjE2MzMzODEzNTEsImV4cCI6MTYzNDU5MDk1MX0.qe9hpMd2jUsCk5Uata_MoJzd6vu5F7dZaAMpN4Vb4uk'
                 }
             })
             if (response.ok) {
-                // the comment has been sent succesfully!!
                 alert('Comment was sent!')
             } else {
                 console.log('error')
